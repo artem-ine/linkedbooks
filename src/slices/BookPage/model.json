@@ -1,0 +1,55 @@
+{
+  "id": "book_page",
+  "type": "SharedSlice",
+  "name": "BookPage",
+  "description": "BookPage",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "cover": {
+          "type": "Image",
+          "config": {
+            "label": "cover",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "name": {
+          "type": "StructuredText",
+          "config": {
+            "label": "name",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "summary": {
+          "type": "StructuredText",
+          "config": {
+            "label": "summary",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "written_by": {
+          "type": "Link",
+          "config": {
+            "label": "written by ",
+            "select": "document",
+            "customtypes": [
+              "author"
+            ]
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

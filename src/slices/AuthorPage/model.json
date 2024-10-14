@@ -1,0 +1,44 @@
+{
+  "id": "author_page",
+  "type": "SharedSlice",
+  "name": "AuthorPage",
+  "description": "AuthorPage",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "name": {
+          "type": "StructuredText",
+          "config": {
+            "label": "name",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "bio": {
+          "type": "StructuredText",
+          "config": {
+            "label": "bio",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "books_written": {
+          "type": "Link",
+          "config": {
+            "label": "books written",
+            "select": "document"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
