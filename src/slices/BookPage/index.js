@@ -13,10 +13,10 @@ const BookPage = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="book-page"
+      className="book"
     >
       <PrismicNextImage field={slice.primary.cover} />
-      <PrismicRichText field={slice.primary.name} />
+      <PrismicRichText field={slice.primary.name}/>
       <PrismicRichText field={slice.primary.summary} />
       {/* <PrismicNextLink field={slice.primary.written_by}>
         author

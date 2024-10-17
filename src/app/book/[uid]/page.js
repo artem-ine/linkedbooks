@@ -30,12 +30,12 @@ export default async function Page({ params }) {
   console.log("name", authorName.data.slices[0]?.primary?.name[0].text)
 
   return (
-    <div>
+    <div className="book-page">
       <SliceZone slices={bookData.slices} components={components} />
       {author && (
         <div style={{ marginTop: "20px" }}>
-          <p>author name: {authorName.data.slices[0]?.primary?.name[0].text}</p>
-          <PrismicNextLink field={author}>author page</PrismicNextLink>
+          <p>Written by: {authorName.data.slices[0]?.primary?.name[0].text}</p>
+          <PrismicNextLink field={author}>Author Page</PrismicNextLink>
         </div>
       )}
     </div>

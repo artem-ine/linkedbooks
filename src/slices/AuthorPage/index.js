@@ -16,9 +16,6 @@ const AuthorPage = ({ slice }) => {
     >
       <PrismicRichText field={slice.primary.name} />
       <PrismicRichText field={slice.primary.bio} />
-      {/* <PrismicNextLink field={slice.primary.books_written}>
-        Links
-      </PrismicNextLink> */}
     </section>
   );
 };
