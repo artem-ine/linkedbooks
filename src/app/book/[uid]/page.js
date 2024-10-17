@@ -27,7 +27,7 @@ export default async function Page({ params }) {
   const author = bookData.author;
     
   const authorName = await client.getByUID("author", author.uid)
-  console.log("name", authorName.data.slices[0]?.primary?.name[0].text)
+  // console.log("name", authorName.data.slices[0]?.primary?.name[0].text)
 
   return (
     <div className="book-page">

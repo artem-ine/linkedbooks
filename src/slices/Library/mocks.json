@@ -29,20 +29,6 @@
 										"id": "mock_document_id"
 									}
 								}
-							],
-							[
-								"book_read_title",
-								{
-									"__TYPE__": "StructuredTextContent",
-									"value": [
-										{
-											"type": "paragraph",
-											"content": {
-												"text": "Incididunt in commodo proident enim eu do enim aliquip ex ad adipisicing. Qui officia ad proident cupidatat."
-											}
-										}
-									]
-								}
 							]
 						]
 					}

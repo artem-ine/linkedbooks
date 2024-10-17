@@ -13,6 +13,7 @@ const AuthorPage = ({ slice }) => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      className="author-page"
     >
       <PrismicRichText field={slice.primary.name} />
       <PrismicRichText field={slice.primary.bio} />

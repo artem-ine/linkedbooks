@@ -12,14 +12,6 @@
           "label": "UID"
         }
       },
-      "book": {
-        "type": "Link",
-        "config": {
-          "label": "book",
-          "select": "document",
-          "customtypes": ["book"]
-        }
-      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

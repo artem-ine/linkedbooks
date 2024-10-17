@@ -11,17 +11,6 @@ type AuthorDocumentDataSlicesSlice = AuthorPageSlice;
  */
 interface AuthorDocumentData {
   /**
-   * book field in *author*
-   *
-   * - **Field Type**: Content Relationship
-   * - **Placeholder**: *None*
-   * - **API ID Path**: author.book
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  book: prismic.ContentRelationshipField<"book">;
-
-  /**
    * Slice Zone field in *author*
    *
    * - **Field Type**: Slice Zone
@@ -691,16 +680,6 @@ export interface LibrarySliceDefaultPrimaryBooksReadItem {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   book_read: prismic.ContentRelationshipField<"book">;
-
-  /**
-   * book read title field in *Library → Default → Primary → books read*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: library.default.primary.books_read[].book_read_title
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  book_read_title: prismic.RichTextField;
 }
 
 /**
