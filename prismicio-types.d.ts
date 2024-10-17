@@ -340,16 +340,6 @@ export interface BookPageSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   summary: prismic.RichTextField;
-
-  /**
-   * written by  field in *BookPage → Default → Primary*
-   *
-   * - **Field Type**: Content Relationship
-   * - **Placeholder**: *None*
-   * - **API ID Path**: book_page.default.primary.written_by
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  written_by: prismic.ContentRelationshipField<"author">;
 }
 
 /**
