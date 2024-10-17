@@ -63,6 +63,17 @@ interface BookDocumentData {
   author: prismic.ContentRelationshipField<"author">;
 
   /**
+   * nombre field in *book*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: book.nombre
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  nombre: prismic.KeyTextField;
+
+  /**
    * Slice Zone field in *book*
    *
    * - **Field Type**: Slice Zone
@@ -85,6 +96,89 @@ interface BookDocumentData {
  */
 export type BookDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<BookDocumentData>, "book", Lang>;
+
+type BooksDocumentDataSlicesSlice = LibrarySlice;
+
+/**
+ * Content for library documents
+ */
+interface BooksDocumentData {
+  /**
+   * book field in *library*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: books.book
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  book: prismic.ContentRelationshipField<"book">;
+
+  /**
+   * title field in *library*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: books.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *library*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: books.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<BooksDocumentDataSlicesSlice> /**
+   * Meta Title field in *library*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: books.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *library*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: books.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *library*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: books.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * library document from Prismic
+ *
+ * - **API ID**: `books`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type BooksDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<Simplify<BooksDocumentData>, "books", Lang>;
 
 type HomeDocumentDataSlicesSlice = HeroSlice;
 
@@ -147,7 +241,42 @@ interface HomeDocumentData {
 export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
-export type AllDocumentTypes = AuthorDocument | BookDocument | HomeDocument;
+type RandomDocumentDataSlicesSlice = never;
+
+/**
+ * Content for random documents
+ */
+interface RandomDocumentData {
+  /**
+   * `slices` field in *random*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: random.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<RandomDocumentDataSlicesSlice>;
+}
+
+/**
+ * random document from Prismic
+ *
+ * - **API ID**: `random`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type RandomDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<RandomDocumentData>, "random", Lang>;
+
+export type AllDocumentTypes =
+  | AuthorDocument
+  | BookDocument
+  | BooksDocument
+  | HomeDocument
+  | RandomDocument;
 
 /**
  * Primary content in *AuthorPage → Default → Primary*
@@ -574,6 +703,88 @@ type HeroSliceVariation = HeroSliceDefault | HeroSliceImageRight;
  */
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
+/**
+ * Item in *Library → Default → Primary → books read*
+ */
+export interface LibrarySliceDefaultPrimaryBooksReadItem {
+  /**
+   * book read field in *Library → Default → Primary → books read*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: library.default.primary.books_read[].book_read
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  book_read: prismic.ContentRelationshipField<"book">;
+
+  /**
+   * book read title field in *Library → Default → Primary → books read*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: library.default.primary.books_read[].book_read_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  book_read_title: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Library → Default → Primary*
+ */
+export interface LibrarySliceDefaultPrimary {
+  /**
+   * heading field in *Library → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: library.default.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * books read field in *Library → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: library.default.primary.books_read[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  books_read: prismic.GroupField<
+    Simplify<LibrarySliceDefaultPrimaryBooksReadItem>
+  >;
+}
+
+/**
+ * Default variation for Library Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LibrarySliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<LibrarySliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Library*
+ */
+type LibrarySliceVariation = LibrarySliceDefault;
+
+/**
+ * Library Shared Slice
+ *
+ * - **API ID**: `library`
+ * - **Description**: Library
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LibrarySlice = prismic.SharedSlice<
+  "library",
+  LibrarySliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -601,9 +812,15 @@ declare module "@prismicio/client" {
       BookDocument,
       BookDocumentData,
       BookDocumentDataSlicesSlice,
+      BooksDocument,
+      BooksDocumentData,
+      BooksDocumentDataSlicesSlice,
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
+      RandomDocument,
+      RandomDocumentData,
+      RandomDocumentDataSlicesSlice,
       AllDocumentTypes,
       AuthorPageSlice,
       AuthorPageSliceDefaultPrimary,
@@ -625,6 +842,11 @@ declare module "@prismicio/client" {
       HeroSliceVariation,
       HeroSliceDefault,
       HeroSliceImageRight,
+      LibrarySlice,
+      LibrarySliceDefaultPrimaryBooksReadItem,
+      LibrarySliceDefaultPrimary,
+      LibrarySliceVariation,
+      LibrarySliceDefault,
     };
   }
 }

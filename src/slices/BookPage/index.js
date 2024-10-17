@@ -18,9 +18,9 @@ const BookPage = ({ slice }) => {
       <PrismicNextImage field={slice.primary.cover} />
       <PrismicRichText field={slice.primary.name} />
       <PrismicRichText field={slice.primary.summary} />
-      <PrismicNextLink field={slice.primary.written_by}>
-        Link
-      </PrismicNextLink>
+      {/* <PrismicNextLink field={slice.primary.written_by}>
+        author
+      </PrismicNextLink> */}
     </section>
   );
 };

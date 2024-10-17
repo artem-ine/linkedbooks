@@ -1,0 +1,56 @@
+{
+  "id": "library",
+  "type": "SharedSlice",
+  "name": "Library",
+  "description": "Library",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "heading": {
+          "type": "StructuredText",
+          "config": {
+            "label": "heading",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "books_read": {
+          "type": "Group",
+          "config": {
+            "label": "books read",
+            "repeat": true,
+            "fields": {
+              "book_read": {
+                "type": "Link",
+                "config": {
+                  "label": "book read",
+                  "select": "document",
+                  "customtypes": [
+                    "book"
+                  ]
+                }
+              },
+              "book_read_title": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "book read title",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

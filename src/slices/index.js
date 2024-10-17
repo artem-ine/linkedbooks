@@ -7,4 +7,5 @@ export const components = {
   book_page: dynamic(() => import("./BookPage")),
   call_to_action: dynamic(() => import("./CallToAction")),
   hero: dynamic(() => import("./Hero")),
+  library: dynamic(() => import("./Library")),
 };

@@ -20,6 +20,13 @@
           "customtypes": ["author"]
         }
       },
+      "nombre": {
+        "type": "Text",
+        "config": {
+          "label": "nombre",
+          "placeholder": ""
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

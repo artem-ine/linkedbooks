@@ -23,11 +23,15 @@ const routes = [
   },
   {
     type: "book",
-  	path: "/:uid",
+  	path: "/book/:uid",
   },
   {
   	type: "author",
-  	path: "/:uid",
+  	path: "/author/:uid",
+  },
+    {
+  	type: "books",
+   	path: "/library",
   },
 ];
 
