@@ -33,19 +33,8 @@ export default async function Page({ params }) {
     }
   `});
 
-  const { data: authorData } = response;
   const booksWritten = response.data.slices[0]?.primary?.books_written;
   console.log("wrote:", booksWritten)
-  booksWritten.forEach(book => {
-  const bookData = book.wrote;
-  
-  console.log(bookData.uid);      // Access the UID of the book
-  console.log(bookData.slug);     // Access the slug of the book
-  console.log(bookData.url);      // Access the URL of the book
-  console.log(bookData.data);     // Access the data object of the book (e.g., book title, etc.)
-});
-
-
 
   return (
     <div className="author-page">
