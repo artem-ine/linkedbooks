@@ -63,17 +63,6 @@ interface BookDocumentData {
   author: prismic.ContentRelationshipField<"author">;
 
   /**
-   * nombre field in *book*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: book.nombre
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  nombre: prismic.KeyTextField;
-
-  /**
    * Slice Zone field in *book*
    *
    * - **Field Type**: Slice Zone
@@ -241,42 +230,26 @@ interface HomeDocumentData {
 export type HomeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
 
-type RandomDocumentDataSlicesSlice = never;
-
-/**
- * Content for random documents
- */
-interface RandomDocumentData {
-  /**
-   * `slices` field in *random*
-   *
-   * - **Field Type**: Slice Zone
-   * - **Placeholder**: *None*
-   * - **API ID Path**: random.slices[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#slices
-   */
-  slices: prismic.SliceZone<RandomDocumentDataSlicesSlice>;
-}
-
-/**
- * random document from Prismic
- *
- * - **API ID**: `random`
- * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type RandomDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithUID<Simplify<RandomDocumentData>, "random", Lang>;
-
 export type AllDocumentTypes =
   | AuthorDocument
   | BookDocument
   | BooksDocument
-  | HomeDocument
-  | RandomDocument;
+  | HomeDocument;
+
+/**
+ * Item in *AuthorPage → Default → Primary → books written*
+ */
+export interface AuthorPageSliceDefaultPrimaryBooksWrittenItem {
+  /**
+   * wrote field in *AuthorPage → Default → Primary → books written*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: author_page.default.primary.books_written[].wrote
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  wrote: prismic.ContentRelationshipField;
+}
 
 /**
  * Primary content in *AuthorPage → Default → Primary*
@@ -305,12 +278,14 @@ export interface AuthorPageSliceDefaultPrimary {
   /**
    * books written field in *AuthorPage → Default → Primary*
    *
-   * - **Field Type**: Content Relationship
+   * - **Field Type**: Group
    * - **Placeholder**: *None*
-   * - **API ID Path**: author_page.default.primary.books_written
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   * - **API ID Path**: author_page.default.primary.books_written[]
+   * - **Documentation**: https://prismic.io/docs/field#group
    */
-  books_written: prismic.ContentRelationshipField;
+  books_written: prismic.GroupField<
+    Simplify<AuthorPageSliceDefaultPrimaryBooksWrittenItem>
+  >;
 }
 
 /**
@@ -818,11 +793,9 @@ declare module "@prismicio/client" {
       HomeDocument,
       HomeDocumentData,
       HomeDocumentDataSlicesSlice,
-      RandomDocument,
-      RandomDocumentData,
-      RandomDocumentDataSlicesSlice,
       AllDocumentTypes,
       AuthorPageSlice,
+      AuthorPageSliceDefaultPrimaryBooksWrittenItem,
       AuthorPageSliceDefaultPrimary,
       AuthorPageSliceVariation,
       AuthorPageSliceDefault,

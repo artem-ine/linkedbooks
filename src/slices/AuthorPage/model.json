@@ -31,10 +31,19 @@
           }
         },
         "books_written": {
-          "type": "Link",
+          "type": "Group",
           "config": {
             "label": "books written",
-            "select": "document"
+            "repeat": true,
+            "fields": {
+              "wrote": {
+                "type": "Link",
+                "config": {
+                  "label": "wrote",
+                  "select": "document"
+                }
+              }
+            }
           }
         }
       },

@@ -3,41 +3,39 @@ import { SliceZone } from "@prismicio/react";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import { PrismicNextLink } from "@prismicio/next";
+import { PrismicRichText } from "@prismicio/react";
 
 export default async function Page({ params }) {
   const client = createClient();
   const page = await client.getByUID("book", params.uid);
-const response = await client.getByUID("book", params.uid, {
-  graphQuery: `
-    {
-      book {
-        ...bookFields
-        author {
-          ...on author {
-            ...authorFields
+  const response = await client.getByUID("book", params.uid, {
+    graphQuery: `
+      {
+        book {
+          ...bookFields
+          author {
+            ...on author {
+              ...authorFields
+            }
           }
         }
       }
-    }
-  `
-});
-    const { data: bookData } = response;
+    `
+  });
+  
+  const { data: bookData } = response;
   const author = bookData.author;
-
-  console.log("response", response)
-  console.log("author", author)
-  console.log("Author Data:", author.data);
-
+    
+  const authorName = await client.getByUID("author", author.uid)
+  console.log("name", authorName.data.slices[0]?.primary?.name[0].text)
 
   return (
     <div>
-      {/* Render the SliceZone with slices */}
       <SliceZone slices={bookData.slices} components={components} />
-
-      {/* Display the author's name and link to their custom type page */}
       {author && (
         <div style={{ marginTop: "20px" }}>
-          <p>Author link:</p> <PrismicNextLink field={author}>Page</PrismicNextLink>
+          <p>author name: {authorName.data.slices[0]?.primary?.name[0].text}</p>
+          <PrismicNextLink field={author}>author page</PrismicNextLink>
         </div>
       )}
     </div>
