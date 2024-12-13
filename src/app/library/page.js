@@ -5,6 +5,8 @@ import { components } from "@/slices";
 
 import { PrismicNextLink } from "@prismicio/next";
 
+<script async defer src="https://static.cdn.prismic.io/prismic.js?new=true&repo=linkedbooks"></script>
+
 export default async function Page() {
   const client = createClient();
   const page = await client.getSingle("books");
@@ -34,7 +36,27 @@ export default async function Page() {
   `});
 
   const booksRead = response.data.slices[0]?.primary?.books_read;
-  console.log("read:", booksRead)
+  // console.log("read:", booksRead)
+
+    const test = await client.getSingle("books", {
+    graphQuery: `
+    {
+      books {
+        slices {
+          ...on library {
+            variation {
+              ...on default {
+                primary {
+                  books_read
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `});
+  console.log("test:", test.data)
 
 
   return (
@@ -46,7 +68,7 @@ export default async function Page() {
           {booksRead.map((book, index) => (
             <li key={index}>
               <PrismicNextLink field={book.book_read}>
-                {book.book_read.data.slices[0]?.primary?.name[0].text}
+                {book.book_read.data.slices[0]?.primary?.name[0].text}, by {book.book_read.data.slices[0]?.primary?.name[0].text}
               </PrismicNextLink>
             </li>
           ))}

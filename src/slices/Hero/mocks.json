@@ -7,12 +7,10 @@
 				"__TYPE__": "StructuredTextContent",
 				"value": [
 					{
-						"type": "heading2",
+						"type": "heading1",
 						"content": {
-							"text": "Build a website that keeps getting better",
-							"spans": []
-						},
-						"direction": "ltr"
+							"text": "Tonight"
+						}
 					}
 				]
 			},
@@ -27,10 +25,8 @@
 					{
 						"type": "paragraph",
 						"content": {
-							"text": "Learn how prismic.io helps thousands of businesses around the world with some of our customers’ use-cases",
-							"spans": []
-						},
-						"direction": "ltr"
+							"text": "Pariatur do culpa consectetur labore ipsum incididunt reprehenderit commodo ipsum. Laboris ullamco qui labore adipisicing ullamco aliquip. Laborum consequat irure sint occaecat Lorem deserunt laborum nostrud culpa magna aliquip proident in irure adipisicing."
+						}
 					}
 				]
 			},

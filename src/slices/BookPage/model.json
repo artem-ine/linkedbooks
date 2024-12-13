@@ -17,7 +17,13 @@
           "config": {
             "label": "cover",
             "constraint": {},
-            "thumbnails": []
+            "thumbnails": [
+              {
+                "name": "phone",
+                "width": 300,
+                "height": 500
+              }
+            ]
           }
         },
         "name": {
@@ -33,9 +39,16 @@
           "type": "StructuredText",
           "config": {
             "label": "summary",
-            "placeholder": "",
+            "placeholder": "this is a placeholder",
             "allowTargetBlank": true,
             "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "release_date": {
+          "type": "Timestamp",
+          "config": {
+            "label": "release_date",
+            "default": "now"
           }
         }
       },

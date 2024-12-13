@@ -319,7 +319,7 @@ export interface BookPageSliceDefaultPrimary {
    * - **API ID Path**: book_page.default.primary.cover
    * - **Documentation**: https://prismic.io/docs/field#image
    */
-  cover: prismic.ImageField<never>;
+  cover: prismic.ImageField<"phone">;
 
   /**
    * name field in *BookPage → Default → Primary*
@@ -340,6 +340,16 @@ export interface BookPageSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   summary: prismic.RichTextField;
+
+  /**
+   * release_date field in *BookPage → Default → Primary*
+   *
+   * - **Field Type**: Timestamp
+   * - **Placeholder**: *None*
+   * - **API ID Path**: book_page.default.primary.release_date
+   * - **Documentation**: https://prismic.io/docs/field#timestamp
+   */
+  release_date: prismic.TimestampField;
 }
 
 /**
