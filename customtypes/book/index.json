@@ -20,6 +20,14 @@
           "customtypes": ["author"]
         }
       },
+      "release_date": {
+        "type": "Timestamp",
+        "config": {
+          "label": "release date",
+          "placeholder": "",
+          "default": "now"
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

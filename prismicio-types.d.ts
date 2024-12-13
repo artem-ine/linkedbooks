@@ -52,6 +52,17 @@ interface BookDocumentData {
   author: prismic.ContentRelationshipField<"author">;
 
   /**
+   * release date field in *book*
+   *
+   * - **Field Type**: Timestamp
+   * - **Placeholder**: *None*
+   * - **API ID Path**: book.release_date
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#timestamp
+   */
+  release_date: prismic.TimestampField;
+
+  /**
    * Slice Zone field in *book*
    *
    * - **Field Type**: Slice Zone
@@ -335,7 +346,7 @@ export interface BookPageSliceDefaultPrimary {
    * summary field in *BookPage → Default → Primary*
    *
    * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
+   * - **Placeholder**: this is a placeholder
    * - **API ID Path**: book_page.default.primary.summary
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
