@@ -60,7 +60,14 @@ export default async function Page() {
 
 
   return (
+    <div>
   <div>
+    {page.data.test_repeat.map((item, index) => (
+      <div key={index}>
+        {item.static_string}
+      </div>
+    ))}
+  </div>
       <SliceZone slices={page.data.slices} components={components} />
       <div className="library">
         <h2>Books Read</h2>

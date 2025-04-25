@@ -21,6 +21,22 @@
           "placeholder": ""
         }
       },
+      "test_repeat": {
+        "type": "Group",
+        "config": {
+          "label": "test_repeat",
+          "repeat": true,
+          "fields": {
+            "static_string": {
+              "type": "Text",
+              "config": {
+                "label": "static_string",
+                "placeholder": "Static string to test."
+              }
+            }
+          }
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

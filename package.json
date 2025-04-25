@@ -7,12 +7,15 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "slicemachine": "start-slicemachine"
+    "slicemachine": "start-slicemachine",
+    "migrate": "node scripts/migrate.mjs"
   },
   "dependencies": {
-    "@prismicio/client": "^7.11.0",
+    "@prismicio/client": "^7.17.0",
+    "@prismicio/migrate": "^0.0.2",
     "@prismicio/next": "^1.7.0",
     "@prismicio/react": "^2.9.0",
+    "dotenv": "^16.4.7",
     "next": "14.2.15",
     "react": "^18",
     "react-dom": "^18"
@@ -22,5 +25,6 @@
     "postcss": "^8",
     "slice-machine-ui": "^2.8.1",
     "tailwindcss": "^3.4.1"
-  }
+  },
+  "type": "module"
 }

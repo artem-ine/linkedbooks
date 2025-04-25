@@ -86,6 +86,21 @@ interface BookDocumentData {
 export type BookDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<BookDocumentData>, "book", Lang>;
 
+/**
+ * Item in *library → test_repeat*
+ */
+export interface BooksDocumentDataTestRepeatItem {
+  /**
+   * static_string field in *library → test_repeat*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Static string to test.
+   * - **API ID Path**: books.test_repeat[].static_string
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  static_string: prismic.KeyTextField;
+}
+
 type BooksDocumentDataSlicesSlice = LibrarySlice;
 
 /**
@@ -113,6 +128,17 @@ interface BooksDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   title: prismic.KeyTextField;
+
+  /**
+   * test_repeat field in *library*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: books.test_repeat[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  test_repeat: prismic.GroupField<Simplify<BooksDocumentDataTestRepeatItem>>;
 
   /**
    * Slice Zone field in *library*
@@ -779,6 +805,7 @@ declare module "@prismicio/client" {
       BookDocumentDataSlicesSlice,
       BooksDocument,
       BooksDocumentData,
+      BooksDocumentDataTestRepeatItem,
       BooksDocumentDataSlicesSlice,
       HomeDocument,
       HomeDocumentData,
